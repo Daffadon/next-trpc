@@ -6,9 +6,11 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed": "ts-node prisma/seed.ts"
   },
   "dependencies": {
+    "@geist-ui/icons": "^1.0.2",
     "@prisma/client": "6.1.0",
     "@tanstack/react-query": "^5.62.15",
     "@trpc/client": "^11.0.0-rc.682",
@@ -18,11 +20,13 @@
     "prisma": "^6.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "superjson": "^2.2.2"
+    "superjson": "^2.2.2",
+    "ts-node": "^10.9.2",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
+    "typescript": "^5.7.2",
+    "@types/node": "^22.10.5",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "postcss": "^8",

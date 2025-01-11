@@ -1,20 +1,23 @@
 "use client";
 
-import { trpc } from "@/app/_trpc/client";
-import { serverClient } from "@/app/_trpc/serverClient";
+import { trpcClient } from "@/app/_trpc/client";
 import NewsCard from "../card/NewsCard";
 import Link from "next/link";
+import { trpc } from "@/app/_trpc/serverClient";
 
 const NewsList = ({
   news,
 }: {
-  news: Awaited<ReturnType<(typeof serverClient)["news"]["getNews"]>>;
+  news: Awaited<ReturnType<(typeof trpc)["news"]["getNews"]>>;
 }) => {
-  const getNews = trpc.news.getNews.useQuery(undefined, {
-    initialData: news,
+  const getNews = trpcClient.news.getNews.useQuery(undefined, {
+    placeholderData: news,
     refetchOnMount: false,
     refetchOnReconnect: false,
   });
+
+  if (getNews.isLoading) return <div className="text-center">Loading...</div>;
+
   return (
     <div className="mt-10">
       <div className="flex gap-x-4 gap-y-2 justify-center flex-wrap ">

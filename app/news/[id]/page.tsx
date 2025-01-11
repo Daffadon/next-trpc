@@ -1,9 +1,9 @@
-import { serverClient } from "@/app/_trpc/serverClient";
+import { trpc } from "@/app/_trpc/serverClient";
 import { ArrowLeft } from "@geist-ui/icons";
 import Link from "next/link";
 
 export async function generateStaticParams() {
-  const article = await serverClient.news.getNews();
+  const article = await trpc.news.getNews();
 
   return (
     article?.map((news) => ({
@@ -14,7 +14,7 @@ export async function generateStaticParams() {
 
 const NewsDetail = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
-  const data = await serverClient.news.getNewsByTitle({
+  const data = await trpc.news.getNewsByTitle({
     id: parseInt(id, 10),
   });
   return (

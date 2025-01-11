@@ -5,14 +5,13 @@ COPY package*.json ./
 RUN bun install
 COPY . .
 
-RUN bun run prisma generate
-RUN bun run seed
+RUN bunx prisma generate
 RUN bun run build
 
 FROM node:22-alpine
 WORKDIR /app
 
-COPY --from=builder /app/* .
+COPY --from=builder /app/prisma ./prisma
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/.env ./.env
 COPY --from=builder /app/public ./public

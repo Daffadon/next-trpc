@@ -14,7 +14,7 @@ export async function generateStaticParams() {
 
 const NewsDetail = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
-  const data = await trpc.news.getNewsByTitle({
+  const data = await trpc.news.getNewsById({
     id: parseInt(id, 10),
   });
   return (

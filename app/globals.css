@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .input-normal {
+    @apply p-2 border border-gray-600 rounded text-base;
+  }
+}

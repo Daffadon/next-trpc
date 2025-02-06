@@ -1,7 +1,7 @@
 "use client";
 
 import { trpcClient } from "@/app/_trpc/client";
-import NewsCard from "../card/NewsCard";
+import NewsCard from "@/components/card/NewsCard";
 import Link from "next/link";
 import { trpc } from "@/app/_trpc/serverClient";
 
@@ -19,7 +19,7 @@ const NewsList = ({
   if (getNews.isLoading) return <div className="text-center">Loading...</div>;
 
   return (
-    <div className="mt-10">
+    <div className="my-10">
       <div className="flex gap-x-4 gap-y-2 justify-center flex-wrap ">
         {getNews.data ? (
           getNews.data?.map((news) => (
@@ -30,7 +30,7 @@ const NewsList = ({
               style={{ backgroundImage: `url(${news.image})` }}
             >
               <div className="absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-75 rounded-md z-10"></div>
-              <div className="relative z-20">
+              <div className="relative z-20 w-full">
                 <NewsCard news={news} />
               </div>
             </Link>

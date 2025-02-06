@@ -2,9 +2,9 @@ import { News } from "@prisma/client";
 
 const NewsCard = ({ news }: { news: News }) => {
   return (
-    <div className="flex p-5 rounded-md z-10 relative">
-      <div>
-        <div className="flex items-center justify-between text-white">
+    <div className="flex p-5 rounded-md z-10 relative w-full">
+      <div className="w-full">
+        <div className="flex items-center justify-between text-white w-full">
           <p className="text-sm text-yellow-500">
             {news.publishedAt.toLocaleDateString()}
           </p>
